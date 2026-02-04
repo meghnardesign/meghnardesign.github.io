@@ -9,19 +9,18 @@
   <script src="main.js" defer></script>
 </head>
 
-
+<body class="theme-pink">
   <main class="page">
     <header class="hero">
       <h1 class="hero-title">Hi, I’m <span class="hero-name">Meghna</span>.</h1>
 
       <p class="hero-subtitle">
-        4th year SIAT @ SFU student studying<br/>
+        4th year SIAT @ SFU student studying<br />
         Interaction Design + Mobile/Web Development and Design.
-        <br/>
+        <br />
         When I’m not designing, I like to adventure, cook, and go to concerts!
       </p>
     </header>
-
 
     <section class="photo-area" aria-label="Photo stack">
       <div
@@ -32,36 +31,37 @@
         aria-label="Hover or press to expand photos"
         aria-expanded="false"
       >
+        <figure class="polaroid p-left">
+          <img src="images/climbing.jpg" alt="Indoor bouldering/climbing photo" loading="lazy" />
+        </figure>
 
-<figure class="polaroid p-left">
-  <img src="images/climbing.jpg" alt="Indoor bouldering/climbing photo" loading="lazy" />
-</figure>
+        <figure class="polaroid p-center">
+          <img src="images/concerts.jpg" alt="Concert photo with a performer on stage" loading="lazy" />
+        </figure>
 
-<figure class="polaroid p-center">
-  <img src="images/concerts.jpg" alt="Concert photo with a performer on stage" loading="lazy" />
-</figure>
+        <figure class="polaroid p-right">
+          <img src="images/cooking.jpg" alt="Homemade meal photo (bowls of soup)" loading="lazy" />
+        </figure>
 
-<figure class="polaroid p-right">
-  <img src="images/cooking.jpg" alt="Homemade meal photo (bowls of soup)" loading="lazy" />
-</figure>
+        <div class="hover-frame" aria-hidden="true">
+          <span>Hover to expand</span>
+        </div>
+      </div>
     </section>
 
     <section class="cta-area" aria-label="Links">
       <a class="btn btn-primary" href="visualizations.html">
         Explore my Visualizations
         <span class="icon" aria-hidden="true">
-        </span>
-                  <svg viewBox="0 0 24 24" width="18" height="18">
-            <path d="M7 17L17 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path d="M7 17L17 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
           </svg>
+        </span>
       </a>
-
 
       <a class="btn btn-outline" href="mailto:mra125@sfu.ca">
         Want to connect? Click here to send me an email
-        <span class="icon" aria-hidden="true">
-        </span>
       </a>
     </section>
   </main>
