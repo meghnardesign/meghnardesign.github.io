@@ -1,6 +1,6 @@
 :root{
-  --bg: #f7c7cd;          /* soft pink */
-  --ink: #8b0a0a;         /* deep maroon */
+  --bg: #f7c7cd;         
+  --ink: #8b0a0a;         
   --paper: rgba(255,255,255,.72);
   --paper-2: rgba(255,255,255,.62);
   --shadow: 0 18px 35px rgba(0,0,0,.18);
@@ -36,7 +36,7 @@ body{
   overflow-x: hidden;
 }
 
-/* Serif look similar to your mockups */
+
 body, button, input, textarea{
   font-family: "Cormorant Garamond Local", ui-serif, Georgia, "Times New Roman", serif;
 }
@@ -52,7 +52,7 @@ body, button, input, textarea{
 }
 
 
-/* --- HOME --- */
+
 .hero{
   text-align: center;
   margin-top: clamp(0.2rem, 4vw, 2.5rem);
@@ -68,16 +68,22 @@ body, button, input, textarea{
 .hero-subtitle{
   margin: 1.25rem auto 0;
   width: min(720px, 92%);
-  text-align: left;
+  text-align: center;
   font-size: clamp(1rem, 1.6vw, 1.25rem);
   line-height: 1.35;
 }
 
-/* photo area */
 .photo-area{
   margin-top: clamp(2.2rem, 6vw, 3.2rem);
   position: relative;
+  
 }
+
+.photo-area,
+.photo-stack{
+  overflow: visible;
+}
+
 
 .photo-stack{
   position: relative;
@@ -89,7 +95,7 @@ body, button, input, textarea{
   cursor: pointer;
 }
 
-/* Polaroid frame */
+
 .polaroid{
   position: absolute;
   inset: 0;
@@ -113,12 +119,13 @@ body, button, input, textarea{
   background: rgba(0,0,0,.08);
 }
 
-/* initial stacked positions (these match the “collapsed” PDF vibe) */
-.p-left{  z-index: 1; transform: translate(-16%, 10%) rotate(-10deg) scale(.98); background: rgba(230,230,230,.65); }
+
+.p-left{  z-index: 1; transform: translate(-16%, 70%) rotate(-10deg) scale(.98); background: rgba(230,230,230,.65); }
 .p-center{z-index: 3; transform: translate(0%, 2%) rotate(2deg) scale(1.00); }
 .p-right{ z-index: 2; transform: translate(16%, 10%) rotate(10deg) scale(.98); background: rgba(230,230,230,.65); }
 
-/* Hover frame overlay */
+
+
 .hover-frame{
   position: absolute;
   inset: 0;
@@ -138,7 +145,6 @@ body, button, input, textarea{
   font-size: clamp(1.1rem, 2vw, 1.45rem);
 }
 
-/* Expanded note (hidden until expanded) */
 .expanded-note{
   position: absolute;
   right: clamp(0rem, 2vw, 1rem);
@@ -153,7 +159,7 @@ body, button, input, textarea{
   will-change: opacity, transform;
 }
 
-/* CTA buttons */
+
 .cta-area{
   margin-top: clamp(2rem, 6vw, 3rem);
   display: grid;
@@ -186,16 +192,25 @@ body, button, input, textarea{
   border: 1px solid var(--ink);
 }
 
-.btn .icon{ display: inline-grid; place-items: center; }
-.btn:hover{ transform: translateY(-1px); }
-.btn:active{ transform: translateY(0px); }
+.btn{
+  transition: opacity 0.18s ease;
+}
+
+.btn:hover{
+  opacity: 0.85;
+}
+
+.btn:active{
+  opacity: 0.78;
+}
+
 
 .btn:focus-visible{
   outline: 2px solid rgba(139,10,10,.35);
   outline-offset: 3px;
 }
 
-/* --- VISUALIZATIONS PAGE --- */
+
 .page-viz{
   padding-top: clamp(2rem, 6vw, 3.5rem);
 }
@@ -218,7 +233,7 @@ body, button, input, textarea{
   min-width: unset;
 }
 
-/* label-left + big blank-right area */
+
 .viz-row{
   display: grid;
   grid-template-columns: 180px 1fr;

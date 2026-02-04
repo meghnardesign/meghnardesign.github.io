@@ -1,14 +1,10 @@
-// vis.js — Minimal "Brain tabs" hover-expand visualization
-// - Collapsed: label only + "›" hint
-// - Hover: expands and shows attention bar + % (like your 2nd screenshot)
-// Renders into #viz1. Leaves #viz2 blank.
 
 document.addEventListener("DOMContentLoaded", () => {
   const v1 = document.getElementById("viz1");
   const v2 = document.getElementById("viz2");
 
   if (v1) renderBrainTabs(v1);
-  if (v2) renderCatFromFile(v2); // <-- instead of clearing it
+  if (v2) renderCatFromFile(v2); 
 });
 
 
@@ -58,13 +54,12 @@ function renderBrainTabs(container) {
   const w = clamp(container.clientWidth || 760, 320, 980);
   const pad = 18;
 
-  // Browser window
+
   const frameX = pad;
   const frameY = pad;
   const frameW = w - pad * 2;
   const chromeH = 44;
 
-  // Tabs layout
   const tabH = 38;
   const gap = 10;
   const innerPad = 18;
@@ -73,7 +68,6 @@ function renderBrainTabs(container) {
   const expandedW = Math.min(520, frameW - innerPad * 2);
   const collapsedW = Math.min(260, expandedW);
 
-  // Make window tall enough for all tabs
   const tabsTotalH = tabs.length * tabH + (tabs.length - 1) * gap;
   const frameH = tabTopOffset + tabsTotalH + 18;
   const h = frameY + frameH + pad;
@@ -89,7 +83,7 @@ function renderBrainTabs(container) {
   const defs = svgEl("defs");
   svg.appendChild(defs);
 
-  // Frame
+
   svg.appendChild(svgEl("rect", {
     x: frameX, y: frameY, width: frameW, height: frameH,
     rx: 12,
@@ -98,7 +92,7 @@ function renderBrainTabs(container) {
     "stroke-width": 1.2
   }));
 
-  // Chrome bar
+
   svg.appendChild(svgEl("rect", {
     x: frameX, y: frameY, width: frameW, height: chromeH,
     rx: 12,
@@ -107,13 +101,12 @@ function renderBrainTabs(container) {
     "stroke-width": 1
   }));
 
-  // Window dots
+
   const dotY = frameY + 22;
   [frameX + 18, frameX + 34, frameX + 50].forEach((dx) => {
     svg.appendChild(svgEl("circle", { cx: dx, cy: dotY, r: 5, fill: "rgba(139,10,10,.28)" }));
   });
 
-  // Address bar
   svg.appendChild(svgEl("rect", {
     x: frameX + 78, y: frameY + 12,
     width: frameW - 98, height: 20,
@@ -126,17 +119,16 @@ function renderBrainTabs(container) {
   const tabAreaX = frameX + innerPad;
   const tabAreaY = frameY + tabTopOffset;
 
-  // Attention UI sizing (matches your desired style)
-  const rightPad = 18;     // space from right edge
-  const pctGap = 25;       // gap between bar end and %
-  const barTotalW = 240;   // track width
-  const barPad = 0;        // inner padding for fill ends
+
+  const rightPad = 18;    
+  const pctGap = 25;       
+  const barTotalW = 240;   
+  const barPad = 0;        
 
   tabs.forEach((t, i) => {
     const x = tabAreaX;
     const y = tabAreaY + i * (tabH + gap);
 
-    // Clip so expanded content doesn't spill outside current width
     const clipId = `clip-tab-${i}`;
     const clipPath = svgEl("clipPath", { id: clipId, clipPathUnits: "userSpaceOnUse" });
     const clipRect = svgEl("rect", { x: 0, y: 0, width: collapsedW, height: tabH, rx: 10 });
@@ -163,7 +155,7 @@ function renderBrainTabs(container) {
     const label = svgEl("text", { x: 28, y: 24, "font-size": 14, fill: "rgba(139,10,10,.92)" });
     label.textContent = truncate(t.title, 34);
 
-    // Expand hint (collapsed only)
+
     const caret = svgEl("text", {
       x: collapsedW - 18,
       y: 24,
@@ -174,7 +166,6 @@ function renderBrainTabs(container) {
     });
     caret.textContent = "›";
 
-    // Attention group (bar + % OUTSIDE bar)
     const attnG = svgEl("g", { opacity: 0 });
 
     const barBg = svgEl("rect", {
@@ -209,7 +200,7 @@ function renderBrainTabs(container) {
 
     svg.appendChild(g);
 
-    // State
+
     let width = collapsedW;
     let expanded = false;
     let cancelWidth = null;
@@ -221,13 +212,13 @@ function renderBrainTabs(container) {
       hit.setAttribute("width", String(newW));
       clipRect.setAttribute("width", String(newW));
 
-      // caret pinned to right edge (only visible when collapsed)
+   
       caret.setAttribute("x", String(newW - 18));
 
-      // % pinned to right edge
+
       const pctX = newW - rightPad;
 
-      // bar ends before % with a gap
+ 
       const barRight = pctX - pctGap;
       const barX = barRight - barTotalW;
 
@@ -266,7 +257,6 @@ function renderBrainTabs(container) {
       card.setAttribute("fill", "rgba(255,255,255,.86)");
       card.setAttribute("stroke", "rgba(139,10,10,.40)");
 
-      // show attention immediately + hide caret immediately
       fade(attnG, 1);
       fade(caret, 0);
       pop(1.02);
@@ -338,13 +328,12 @@ function renderCatFromFile(container) {
   img.src = "images/cat.svg";
   img.alt = "Cat icon";
 
-  // Use rem instead of px
-  img.style.width = "min(20rem, 100%)"; 
+  img.style.width = "min(20rem, 80%)"; 
   img.style.height = "auto";
   img.style.display = "block";
   img.style.cursor = "pointer";
 
-  // Smooth (no jitter)
+
   img.style.transformOrigin = "50% 50%";
   img.style.willChange = "transform";
   img.style.transition = "transform 0.22s cubic-bezier(.16, 1, .3, 1)";
@@ -354,11 +343,11 @@ function renderCatFromFile(container) {
 
   img.addEventListener("mouseenter", () => {
     if (leaveTimer) clearTimeout(leaveTimer);
-    img.style.transform = "translateY(-0.125rem) scale(1.05)"; // was -2px
+    img.style.transform = "translateY(-0.125rem) scale(1.05)"; 
   });
 
   img.addEventListener("mouseleave", () => {
-    img.style.transform = "translateY(0.375rem) scale(1)";     // was 6px
+    img.style.transform = "translateY(0.375rem) scale(1)";     
     leaveTimer = setTimeout(() => {
       img.style.transform = "translateY(0) scale(1)";
     }, 120);
