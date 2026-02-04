@@ -1,282 +1,163 @@
-// ===== Navigation & DOM Ready =====
-document.addEventListener('DOMContentLoaded', function() {
-    initializeNavigation();
-    initializeFormValidation();
-    initializeSmoothScroll();
-    initializeIntersectionObserver();
+// main.js (required): photo-stack expand animation (hover + keyboard + click)
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupPhotoStack();
 });
 
-// ===== Navigation Functionality =====
-function initializeNavigation() {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
+function setupPhotoStack() {
+  const stack = document.getElementById("photoStack");
+  if (!stack) return;
 
-    // Hamburger menu toggle
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
+  const left = stack.querySelector(".p-left");
+  const center = stack.querySelector(".p-center");
+  const right = stack.querySelector(".p-right");
+  const frame = stack.querySelector(".hover-frame");
+  const note = document.getElementById("expandedNote");
+
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // transforms (collapsed vs expanded) — tuned to resemble your PDFs
+  const T = {
+    collapsed: {
+      left: "translate(-16%, 10%) rotate(-10deg) scale(.98)",
+      center: "translate(0%, 2%) rotate(2deg) scale(1)",
+      right: "translate(16%, 10%) rotate(10deg) scale(.98)",
+      frame: "translate(0%, 8%) scale(1)",
+      frameOpacity: 1,
+      noteOpacity: 0,
+      noteTransform: "rotate(8deg) translateY(6px)"
+    },
+    expanded: {
+      left: "translate(-52%, 12%) rotate(-8deg) scale(1)",
+      center: "translate(0%, -2%) rotate(1deg) scale(1.03)",
+      right: "translate(52%, 12%) rotate(8deg) scale(1)",
+      frame: "translate(0%, 8%) scale(.98)",
+      frameOpacity: 0,
+      noteOpacity: 1,
+      noteTransform: "rotate(8deg) translateY(0px)"
+    }
+  };
+
+  let expanded = false;
+  let running = [];
+
+  function cancelRunning() {
+    running.forEach(a => a.cancel());
+    running = [];
+  }
+
+  function applyInstant(state) {
+    left.style.transform = state.left;
+    center.style.transform = state.center;
+    right.style.transform = state.right;
+
+    frame.style.transform = state.frame;
+    frame.style.opacity = String(state.frameOpacity);
+
+    if (note) {
+      note.style.opacity = String(state.noteOpacity);
+      note.style.transform = state.noteTransform;
+      note.setAttribute("aria-hidden", state.noteOpacity === 0 ? "true" : "false");
+    }
+  }
+
+  function animateTo(targetKey) {
+    const from = expanded ? T.expanded : T.collapsed;
+    const to = targetKey === "expanded" ? T.expanded : T.collapsed;
+
+    expanded = targetKey === "expanded";
+    stack.setAttribute("aria-expanded", expanded ? "true" : "false");
+
+    if (reduced || !("animate" in HTMLElement.prototype)) {
+      cancelRunning();
+      applyInstant(to);
+      return;
     }
 
-    // Close menu when a link is clicked
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            if (hamburger) {
-                hamburger.classList.remove('active');
-            }
-            
-            // Update active state
-            navLinks.forEach(nav => nav.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
+    cancelRunning();
 
-    // Update active nav link on scroll
-    window.addEventListener('scroll', updateActiveNavLink);
-}
+    // “bouncy” feel using a tiny overshoot keyframe
+    const ease = "cubic-bezier(.16, 1, .3, 1)";
+    const dur = 560;
 
-function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id], header[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    let currentSection = '';
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 200) {
-            currentSection = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').includes(currentSection) && currentSection) {
-            link.classList.add('active');
-        }
-    });
-}
-
-// ===== Form Validation =====
-function initializeFormValidation() {
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            // Validate inputs
-            if (!validateName(name)) {
-                showAlert('Please enter a valid name (at least 2 characters)', 'error');
-                return;
-            }
-
-            if (!validateEmail(email)) {
-                showAlert('Please enter a valid email address', 'error');
-                return;
-            }
-
-            if (!validateMessage(message)) {
-                showAlert('Please enter a message (at least 10 characters)', 'error');
-                return;
-            }
-
-            // If all validations pass
-            showAlert('Thank you for your message! I will get back to you soon.', 'success');
-            
-            // Reset form
-            contactForm.reset();
-
-            // Log the form data (in a real application, this would be sent to a server)
-            console.log('Form submitted:', { name, email, message });
-        });
-
-        // Add real-time validation feedback
-        const inputs = contactForm.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                validateField(this);
-            });
-
-            input.addEventListener('input', function() {
-                // Remove error styling on input
-                if (this.classList.contains('error')) {
-                    this.classList.remove('error');
-                }
-            });
-        });
-    }
-}
-
-function validateName(name) {
-    return name.length >= 2;
-}
-
-function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function validateMessage(message) {
-    return message.length >= 10;
-}
-
-function validateField(field) {
-    let isValid = true;
-    const value = field.value.trim();
-
-    if (field.name === 'name') {
-        isValid = validateName(value);
-    } else if (field.name === 'email') {
-        isValid = validateEmail(value);
-    } else if (field.name === 'message') {
-        isValid = validateMessage(value);
-    }
-
-    if (!isValid) {
-        field.classList.add('error');
-    } else {
-        field.classList.remove('error');
-    }
-
-    return isValid;
-}
-
-function showAlert(message, type) {
-    // Create alert element
-    const alertDiv = document.createElement('div');
-    alertDiv.className = `alert alert-${type}`;
-    alertDiv.textContent = message;
-    alertDiv.style.cssText = `
-        position: fixed;
-        top: 2rem;
-        right: 2rem;
-        padding: 1rem 1.5rem;
-        background-color: ${type === 'success' ? '#27ae60' : '#e74c3c'};
-        color: white;
-        border-radius: 0.5rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 10000;
-        animation: slideIn 0.3s ease;
-        max-width: 300px;
-    `;
-
-    document.body.appendChild(alertDiv);
-
-    // Remove alert after 4 seconds
-    setTimeout(() => {
-        alertDiv.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => alertDiv.remove(), 300);
-    }, 4000);
-}
-
-// ===== Smooth Scroll =====
-function initializeSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-}
-
-// ===== Intersection Observer for Animations =====
-function initializeIntersectionObserver() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+    const overshoot = (val, factor = 1) => {
+      // small scale/translate overshoot by nudging the string values a bit
+      // (simple + effective for this use case)
+      return val
+        .replace("scale(1)", `scale(${1 + 0.02 * factor})`)
+        .replace("scale(1.03)", `scale(${1.04 + 0.01 * factor})`);
     };
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+    running.push(left.animate(
+      [
+        { transform: from.left, offset: 0 },
+        { transform: overshoot(to.left, 1), offset: 0.78 },
+        { transform: to.left, offset: 1 }
+      ],
+      { duration: dur, easing: ease, fill: "forwards" }
+    ));
 
-    // Observe cards and other elements
-    document.querySelectorAll('.education-card, .skill-category, .timeline-item, .visualization-card').forEach(el => {
-        el.style.opacity = '0';
-        observer.observe(el);
-    });
+    running.push(center.animate(
+      [
+        { transform: from.center, offset: 0 },
+        { transform: overshoot(to.center, 1.2), offset: 0.8 },
+        { transform: to.center, offset: 1 }
+      ],
+      { duration: dur + 60, easing: ease, fill: "forwards" }
+    ));
+
+    running.push(right.animate(
+      [
+        { transform: from.right, offset: 0 },
+        { transform: overshoot(to.right, 1), offset: 0.78 },
+        { transform: to.right, offset: 1 }
+      ],
+      { duration: dur, easing: ease, fill: "forwards" }
+    ));
+
+    running.push(frame.animate(
+      [
+        { opacity: from.frameOpacity, transform: from.frame, offset: 0 },
+        { opacity: to.frameOpacity, transform: to.frame, offset: 1 }
+      ],
+      { duration: 320, easing: ease, fill: "forwards" }
+    ));
+
+    if (note) {
+      running.push(note.animate(
+        [
+          { opacity: from.noteOpacity, transform: from.noteTransform, offset: 0 },
+          { opacity: to.noteOpacity, transform: to.noteTransform, offset: 1 }
+        ],
+        { duration: 360, delay: expanded ? 120 : 0, easing: ease, fill: "forwards" }
+      ));
+    }
+  }
+
+  function expand() { if (!expanded) animateTo("expanded"); }
+  function collapse() { if (expanded) animateTo("collapsed"); }
+  function toggle() { animateTo(expanded ? "collapsed" : "expanded"); }
+
+  // Hover / pointer
+  stack.addEventListener("pointerenter", expand);
+  stack.addEventListener("pointerleave", collapse);
+
+  // Click (mobile-friendly)
+  stack.addEventListener("click", (e) => {
+    // prevent accidental text selection
+    e.preventDefault();
+    toggle();
+  });
+
+  // Keyboard
+  stack.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggle();
+    }
+    if (e.key === "Escape") collapse();
+  });
+
+  // Start collapsed
+  applyInstant(T.collapsed);
 }
-
-// ===== Animations (add to CSS or keep in JS) =====
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes slideIn {
-        from {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-    }
-
-    .form-group input.error,
-    .form-group textarea.error {
-        border-color: #e74c3c;
-        background-color: rgba(231, 76, 60, 0.05);
-    }
-
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 30px white inset !important;
-    }
-`;
-document.head.appendChild(style);
-
-// ===== Utility Functions =====
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// ===== Console Log for Debugging =====
-console.log('Portfolio website loaded successfully!');

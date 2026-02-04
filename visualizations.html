@@ -1,98 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Data visualizations and creative SVG art">
-    <title>Visualizations - Meghna Rajamohan</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Visualizations</title>
+  <meta name="description" content="SVG visualization portfolio." />
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
+  <script src="vis.js" defer></script>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">MR</div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="index.html#about" class="nav-link">About</a></li>
-                <li><a href="index.html#education" class="nav-link">Education</a></li>
-                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
-                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
-                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-                <li><a href="visualizations.html" class="nav-link active">Visualizations</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Page Header -->
-        <header class="page-header">
-            <div class="container">
-                <h1>Data Visualizations & Creative Art</h1>
-                <p>A collection of interactive visualizations and creative SVG designs</p>
-            </div>
-        </header>
+<body class="theme-pink">
+  <a class="mark" href="index.html" aria-label="Home">
+    <svg viewBox="0 0 64 40" width="34" height="22" aria-hidden="true">
+      <path d="M6 20c8-10 18-14 26-14s18 4 26 14c-8 10-18 14-26 14S14 30 6 20Z" fill="currentColor"/>
+      <path d="M12 20c6 6 12 8 20 8s14-2 20-8c-6-6-12-8-20-8s-14 2-20 8Z" fill="rgba(255,255,255,.18)"/>
+    </svg>
+  </a>
 
-        <!-- Visualizations Container -->
-        <section class="section visualizations">
-            <div class="container">
-                <!-- Visualization 1: Data Visualization -->
-                <article class="visualization-card">
-                    <div class="visualization-header">
-                        <h2>Programming Language Popularity</h2>
-                        <p class="description">An interactive bar chart visualization showing the popularity of different programming languages based on GitHub activity.</p>
-                    </div>
-                    <div class="visualization-container">
-                        <svg id="dataVisualization" class="svg-visualization" preserveAspectRatio="xMidYMid meet"></svg>
-                    </div>
-                </article>
+  <main class="page page-viz">
+    <header class="viz-hero">
+      <h1 class="viz-title">Visualizations</h1>
 
-                <!-- Visualization 2: Creative SVG Art -->
-                <article class="visualization-card">
-                    <div class="visualization-header">
-                        <h2>Interactive Pattern Generator</h2>
-                        <p class="description">A creative SVG art piece that generates interactive geometric patterns using JavaScript. Hover over elements to interact with the visualization.</p>
-                    </div>
-                    <div class="visualization-container">
-                        <svg id="creativeArt" class="svg-visualization" preserveAspectRatio="xMidYMid meet"></svg>
-                    </div>
-                </article>
-            </div>
-        </section>
+      <a class="btn btn-primary btn-back" href="index.html">
+        Go back to Home
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path d="M7 17L17 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </a>
+    </header>
 
-        <!-- About Visualizations -->
-        <section class="section visualization-info">
-            <div class="container">
-                <h2>About These Visualizations</h2>
-                <div class="info-grid">
-                    <div class="info-card">
-                        <h3>Data Visualization</h3>
-                        <p>This visualization represents real-world data using an interactive bar chart. The heights of the bars represent relative popularity, and the colors help distinguish between different categories. This type of visualization is useful for comparing values across different categories quickly.</p>
-                    </div>
-                    <div class="info-card">
-                        <h3>Creative SVG Art</h3>
-                        <p>The interactive pattern generator showcases the creative possibilities of SVG and JavaScript combined. Each element responds to user interaction, creating a dynamic and engaging experience. This demonstrates how code can be used to create artistic expressions and interactive experiences.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    <section class="viz-row" aria-label="Visualization section">
+      <div class="viz-label">
+        <p class="viz-num">01/</p>
+        <p class="viz-name">Visualization</p>
+      </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Meghna Rajamohan. All rights reserved.</p>
-            <p>Built with HTML, CSS, JavaScript, and SVG | Responsive Design</p>
-        </div>
-    </footer>
+      <!-- Leave blank: your SVG will render here later -->
+      <div id="viz1" class="viz-canvas" aria-label="Visualization canvas"></div>
+    </section>
 
-    <script src="vis.js"></script>
-    <script src="main.js"></script>
+    <section class="viz-row" aria-label="Creative SVG art section">
+      <div class="viz-label">
+        <p class="viz-num">02/</p>
+        <p class="viz-name">Creative SVG Art</p>
+      </div>
+
+      <!-- Leave blank: your SVG art will render here later -->
+      <div id="viz2" class="viz-canvas" aria-label="Creative SVG canvas"></div>
+    </section>
+  </main>
 </body>
 </html>
