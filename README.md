@@ -1,5 +1,5 @@
 # personal website project
-This assignment enbaled me to create a website using front-end web development and utilizing languages like HTML, CSS, and Javascript, where I created content similar to a portfolio showcasing myself and my basic visualization work.
+This assignment enabled me to create a website using front-end web development and utilizing languages like HTML, CSS, and Javascript, where I created content similar to a portfolio showcasing myself and my basic visualization work.
 
 We used GitHub for version control.
 
