@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal portfolio and resume website">
+    <title>Meghna Rajamohan - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">MR</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="visualizations.html" class="nav-link">Visualizations</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>Meghna Rajamohan</h1>
+            <p class="subtitle">Computer Science Student | Data Visualization Enthusiast</p>
+            <p class="tagline">Crafting interactive experiences through code and design</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I'm a passionate computer science student with a strong interest in data visualization and interactive web design. I enjoy transforming complex data into intuitive visual stories that inform and inspire.</p>
+                        <p>My journey in tech has been driven by curiosity and a desire to create meaningful digital experiences. I believe in the power of clean code, thoughtful design, and user-centered development.</p>
+                    </div>
+                    <figure class="about-image">
+                        <img src="https://via.placeholder.com/300" alt="Profile photo" loading="lazy">
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section education">
+            <div class="container">
+                <h2>Education</h2>
+                <div class="education-grid">
+                    <article class="education-card">
+                        <h3>University of Washington</h3>
+                        <p class="degree">Bachelor of Science in Computer Science</p>
+                        <p class="detail">Expected Graduation: 2026</p>
+                        <p class="detail">Relevant Coursework: Data Structures, Web Development, Data Visualization, Human-Computer Interaction</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section skills">
+            <div class="container">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <ul>
+                            <li>Python</li>
+                            <li>JavaScript</li>
+                            <li>HTML/CSS</li>
+                            <li>Java</li>
+                            <li>SQL</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Web Technologies</h3>
+                        <ul>
+                            <li>React</li>
+                            <li>Node.js</li>
+                            <li>SVG Graphics</li>
+                            <li>D3.js</li>
+                            <li>REST APIs</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools & Platforms</h3>
+                        <ul>
+                            <li>Git/GitHub</li>
+                            <li>Visual Studio Code</li>
+                            <li>Figma</li>
+                            <li>Adobe Creative Suite</li>
+                            <li>Firebase</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Design & Visualization</h3>
+                        <ul>
+                            <li>UI/UX Design</li>
+                            <li>Data Visualization</li>
+                            <li>Responsive Design</li>
+                            <li>Information Architecture</li>
+                            <li>Accessibility</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section experience">
+            <div class="container">
+                <h2>Experience</h2>
+                <div class="timeline">
+                    <article class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Data Visualization Intern</h3>
+                            <p class="company">Tech Company Name</p>
+                            <p class="date">Summer 2025</p>
+                            <p>Developed interactive visualizations for data analysis dashboards using D3.js and React. Collaborated with designers and product managers to create user-friendly interfaces for complex datasets.</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Web Development Project</h3>
+                            <p class="company">University Project</p>
+                            <p class="date">Academic Year 2024-2025</p>
+                            <p>Built full-stack web applications using JavaScript, Python, and SQL. Implemented responsive design principles and created interactive user interfaces with accessibility in mind.</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Open Source Contributions</h3>
+                            <p class="company">GitHub Community</p>
+                            <p class="date">Ongoing</p>
+                            <p>Contributing to open-source projects focused on data visualization and web accessibility. Active community member with focus on documentation and bug fixes.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p class="contact-intro">I'd love to hear from you. Feel free to reach out with any questions or opportunities!</p>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">linkedin.com/in/yourprofile</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/meghnarajamohan" target="_blank" rel="noopener noreferrer">github.com/meghnarajamohan</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Meghna Rajamohan. All rights reserved.</p>
+            <p>Built with HTML, CSS, and JavaScript | Responsive Design</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

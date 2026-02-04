@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Data visualizations and creative SVG art">
+    <title>Visualizations - Meghna Rajamohan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">MR</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#education" class="nav-link">Education</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="visualizations.html" class="nav-link active">Visualizations</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="container">
+                <h1>Data Visualizations & Creative Art</h1>
+                <p>A collection of interactive visualizations and creative SVG designs</p>
+            </div>
+        </header>
+
+        <!-- Visualizations Container -->
+        <section class="section visualizations">
+            <div class="container">
+                <!-- Visualization 1: Data Visualization -->
+                <article class="visualization-card">
+                    <div class="visualization-header">
+                        <h2>Programming Language Popularity</h2>
+                        <p class="description">An interactive bar chart visualization showing the popularity of different programming languages based on GitHub activity.</p>
+                    </div>
+                    <div class="visualization-container">
+                        <svg id="dataVisualization" class="svg-visualization" preserveAspectRatio="xMidYMid meet"></svg>
+                    </div>
+                </article>
+
+                <!-- Visualization 2: Creative SVG Art -->
+                <article class="visualization-card">
+                    <div class="visualization-header">
+                        <h2>Interactive Pattern Generator</h2>
+                        <p class="description">A creative SVG art piece that generates interactive geometric patterns using JavaScript. Hover over elements to interact with the visualization.</p>
+                    </div>
+                    <div class="visualization-container">
+                        <svg id="creativeArt" class="svg-visualization" preserveAspectRatio="xMidYMid meet"></svg>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- About Visualizations -->
+        <section class="section visualization-info">
+            <div class="container">
+                <h2>About These Visualizations</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>Data Visualization</h3>
+                        <p>This visualization represents real-world data using an interactive bar chart. The heights of the bars represent relative popularity, and the colors help distinguish between different categories. This type of visualization is useful for comparing values across different categories quickly.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Creative SVG Art</h3>
+                        <p>The interactive pattern generator showcases the creative possibilities of SVG and JavaScript combined. Each element responds to user interaction, creating a dynamic and engaging experience. This demonstrates how code can be used to create artistic expressions and interactive experiences.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Meghna Rajamohan. All rights reserved.</p>
+            <p>Built with HTML, CSS, JavaScript, and SVG | Responsive Design</p>
+        </div>
+    </footer>
+
+    <script src="vis.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
