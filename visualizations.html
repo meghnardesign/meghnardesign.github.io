@@ -10,14 +10,6 @@
   <script src="vis.js" defer></script>
 </head>
 
-<body class="theme-pink">
-  <a class="mark" href="index.html" aria-label="Home">
-    <svg viewBox="0 0 64 40" width="34" height="22" aria-hidden="true">
-      <path d="M6 20c8-10 18-14 26-14s18 4 26 14c-8 10-18 14-26 14S14 30 6 20Z" fill="currentColor"/>
-      <path d="M12 20c6 6 12 8 20 8s14-2 20-8c-6-6-12-8-20-8s-14 2-20 8Z" fill="rgba(255,255,255,.18)"/>
-    </svg>
-  </a>
-
   <main class="page page-viz">
     <header class="viz-hero">
       <h1 class="viz-title">Visualizations</h1>
@@ -32,26 +24,23 @@
         </span>
       </a>
     </header>
+<section class="viz-row" aria-label="Visualization section">
+  <div class="viz-label">
+    <p class="viz-num">01/</p>
+    <p class="viz-name">Brain Tabs!</p>
+  </div>
+  <div id="viz1" class="viz-canvas" aria-label="Brain tabs visualization"></div>
+</section>
 
-    <section class="viz-row" aria-label="Visualization section">
-      <div class="viz-label">
-        <p class="viz-num">01/</p>
-        <p class="viz-name">Visualization</p>
-      </div>
+<section class="viz-row" aria-label="Creative SVG art section">
+  <div class="viz-label">
+    <p class="viz-num">02/</p>
+    <p class="viz-name">Cute Cat!</p>
+    <p class="viz-note">Coming soon</p>
+  </div>
+  <div id="viz2" class="viz-canvas" aria-label="Creative SVG canvas"></div>
+</section>
 
-      <!-- Leave blank: your SVG will render here later -->
-      <div id="viz1" class="viz-canvas" aria-label="Visualization canvas"></div>
-    </section>
-
-    <section class="viz-row" aria-label="Creative SVG art section">
-      <div class="viz-label">
-        <p class="viz-num">02/</p>
-        <p class="viz-name">Creative SVG Art</p>
-      </div>
-
-      <!-- Leave blank: your SVG art will render here later -->
-      <div id="viz2" class="viz-canvas" aria-label="Creative SVG canvas"></div>
-    </section>
   </main>
 </body>
 </html>

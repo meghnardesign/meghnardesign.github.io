@@ -18,6 +18,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Cormorant Garamond Local";
+  src: url("fonts/CormorantGaramond.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
@@ -30,9 +38,10 @@ body{
 
 /* Serif look similar to your mockups */
 body, button, input, textarea{
-  font-family: "Garamond Nova Pro", ui-serif, "Iowan Old Style", "Palatino Linotype",
-    Palatino, Georgia, "Times New Roman", serif;
+  font-family: "Cormorant Garamond Local", ui-serif, Georgia, "Times New Roman", serif;
 }
+
+
 
 .theme-pink a{ color: inherit; }
 
@@ -42,20 +51,11 @@ body, button, input, textarea{
   padding: clamp(2rem, 5vw, 3.5rem) 0 3rem;
 }
 
-/* top-left lips mark */
-.mark{
-  position: fixed;
-  top: 1.5rem;
-  left: 1.5rem;
-  color: var(--ink);
-  text-decoration: none;
-  z-index: 50;
-}
 
 /* --- HOME --- */
 .hero{
   text-align: center;
-  margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  margin-top: clamp(0.2rem, 4vw, 2.5rem);
 }
 
 .hero-title{
@@ -68,7 +68,7 @@ body, button, input, textarea{
 .hero-subtitle{
   margin: 1.25rem auto 0;
   width: min(720px, 92%);
-  text-align: right;
+  text-align: left;
   font-size: clamp(1rem, 1.6vw, 1.25rem);
   line-height: 1.35;
 }
@@ -245,9 +245,8 @@ body, button, input, textarea{
 }
 
 .viz-canvas{
-  min-height: clamp(240px, 32vw, 360px);
-  /* Intentionally blank (your PDF shows empty space).
-     When you add SVGs, they’ll appear here. */
+  min-height: clamp(20rem, 32vw, 30rem);
+overflow: visible;
 }
 
 @media (max-width: 760px){
