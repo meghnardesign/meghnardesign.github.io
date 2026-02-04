@@ -10,7 +10,6 @@
   <script src="vis.js" defer></script>
 </head>
 
-<body class="theme-pink">
   <main class="page page-viz">
     <header class="viz-hero">
       <h1 class="viz-title">Visualizations</h1>
@@ -18,30 +17,29 @@
       <a class="btn btn-primary btn-back" href="index.html">
         Go back to Home
         <span class="icon" aria-hidden="true">
-          <svg class="icon-svg" viewBox="0 0 24 24">
-            <path d="M7 17L17 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-            <path d="M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path d="M7 17L17 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </span>
       </a>
     </header>
+<section class="viz-row" aria-label="Visualization section">
+  <div class="viz-label">
+    <p class="viz-num">01/</p>
+    <p class="viz-name">Brain Tabs!</p>
+  </div>
+  <div id="viz1" class="viz-canvas" aria-label="Brain tabs visualization"></div>
+</section>
 
-    <section class="viz-row" aria-labelledby="viz1-title">
-      <div class="viz-label">
-        <p class="viz-num">01/</p>
-        <h2 id="viz1-title" class="viz-name">Brain Tabs!</h2>
-      </div>
-      <div id="viz1" class="viz-canvas"></div>
-    </section>
+<section class="viz-row" aria-label="Creative SVG art section">
+  <div class="viz-label">
+    <p class="viz-num">02/</p>
+    <p class="viz-name">Cute Cat!</p>
+  </div>
+  <div id="viz2" class="viz-canvas" aria-label="Creative SVG canvas"></div>
+</section>
 
-    <section class="viz-row" aria-labelledby="viz2-title">
-      <div class="viz-label">
-        <p class="viz-num">02/</p>
-        <h2 id="viz2-title" class="viz-name">Cute Cat!</h2>
-        <p class="viz-note">Coming soon</p>
-      </div>
-      <div id="viz2" class="viz-canvas"></div>
-    </section>
   </main>
 </body>
 </html>
