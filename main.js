@@ -1,4 +1,4 @@
-// main.js (required): photo-stack expand animation (hover + keyboard + click)
+
 
 document.addEventListener("DOMContentLoaded", () => {
   setupPhotoStack();
@@ -16,7 +16,7 @@ function setupPhotoStack() {
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // transforms (collapsed vs expanded) — tuned to resemble your PDFs
+
   const T = {
     collapsed: {
       left: "translate(-16%, 10%) rotate(-10deg) scale(.98)",
@@ -76,13 +76,11 @@ function setupPhotoStack() {
 
     cancelRunning();
 
-    // “bouncy” feel using a tiny overshoot keyframe
     const ease = "cubic-bezier(.16, 1, .3, 1)";
     const dur = 560;
 
     const overshoot = (val, factor = 1) => {
-      // small scale/translate overshoot by nudging the string values a bit
-      // (simple + effective for this use case)
+
       return val
         .replace("scale(1)", `scale(${1 + 0.02 * factor})`)
         .replace("scale(1.03)", `scale(${1.04 + 0.01 * factor})`);
@@ -138,18 +136,17 @@ function setupPhotoStack() {
   function collapse() { if (expanded) animateTo("collapsed"); }
   function toggle() { animateTo(expanded ? "collapsed" : "expanded"); }
 
-  // Hover / pointer
+
   stack.addEventListener("pointerenter", expand);
   stack.addEventListener("pointerleave", collapse);
 
-  // Click (mobile-friendly)
   stack.addEventListener("click", (e) => {
-    // prevent accidental text selection
+
     e.preventDefault();
     toggle();
   });
 
-  // Keyboard
+
   stack.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
@@ -158,6 +155,6 @@ function setupPhotoStack() {
     if (e.key === "Escape") collapse();
   });
 
-  // Start collapsed
+ 
   applyInstant(T.collapsed);
 }
