@@ -1,0 +1,45 @@
+.container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.subhead {
+  opacity: 0.85;
+  margin-top: 0.5rem;
+}
+
+.stack {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card {
+  border: 0.0625rem solid rgba(0, 0, 0, 0.12);
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+.prompt {
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-left: 0.25rem solid rgba(0, 0, 0, 0.18);
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 0.75rem;
+}
+
+.vis {
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer {
+  opacity: 0.7;
+  padding-bottom: 2rem;
+}
+

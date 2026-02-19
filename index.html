@@ -1,67 +1,93 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meghna's Website!</title>
-  <meta name="description" content="Personal website + visualization portfolio." />
-  <link rel="stylesheet" href="style.css" />
-  <script src="main.js" defer></script>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IAT355 — Assignment 3 (Vega-Lite)</title>
 
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="a3.css" />
 
-  <main class="page">
-    <header class="hero">
-      <h1 class="hero-title">Hi, I’m <span class="hero-name">Meghna</span>.</h1>
+    <!-- Makes Observable embeds render nicely -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css"
+    />
+  </head>
 
-      <p class="hero-subtitle">
-        4th year SIAT @ SFU student studying<br/>
-        Interaction Design + Mobile/Web Development and Design.
-        <br/>
-        When I’m not designing, I like to adventure, cook, and go to concerts!
-      </p>
+  <body>
+    <header class="container">
+      <h1>Assignment 3: Vegelite Intro</h1>
     </header>
 
+    <main class="container stack">
+      <section class="card">
+        <h2>Visualization 1 — Global Sales by Genre and Platform</h2>
 
-<section class="photo-area" aria-label="Photo stack">
-  <div
-    id="photoStack"
-    class="photo-stack"
-  >
-    <figure class="polaroid p-left">
-      <img src="images/climbing.jpg" alt="Indoor bouldering/climbing photo" loading="lazy" />
-    </figure>
+        <div class="prompt">
+          <h3>Prompt 1A</h3>
+          <p>Among the <strong>top 10 platforms</strong>, what genres make up their global sales?</p>
+        </div>
+        <div id="vis1a" class="vis"></div>
 
-    <figure class="polaroid p-center">
-      <img src="images/concerts.jpg" alt="Concert photo with a performer on stage" loading="lazy" />
-    </figure>
+        <div class="prompt">
+          <h3>Prompt 1B</h3>
+          <p>When you select genres (legend click), which platforms lead in global sales for those genres?</p>
+        </div>
+        <div id="vis1b" class="vis"></div>
+      </section>
 
-    <figure class="polaroid p-right">
-      <img src="images/cooking.jpg" alt="Homemade meal photo (bowls of soup)" loading="lazy" />
-    </figure>
-  </div>
-</section>
+      <section class="card">
+        <h2>Visualization 2 — Sales Over Time by Platform and Genre</h2>
 
+        <div class="prompt">
+          <h3>Prompt 2A</h3>
+          <p>How do global sales trends change over time for the <strong>top 5 platforms</strong>?</p>
+        </div>
+        <div id="vis2a" class="vis"></div>
 
-    <section class="cta-area" aria-label="Links">
-      <a class="btn btn-primary" href="visualizations.html">
-        Explore my Visualizations
-        <span class="icon" aria-hidden="true">
-        </span>
-                  <svg viewBox="0 0 24 24" width="18" height="18">
-            <path d="M7 17L17 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-      </a>
+        <div class="prompt">
+          <h3>Prompt 2B</h3>
+          <p>How does the genre mix shift over time (top 6 genres, share of total each year)?</p>
+        </div>
+        <div id="vis2b" class="vis"></div>
+      </section>
 
+      <section class="card">
+        <h2>Visualization 3 — Regional Sales vs. Platform</h2>
 
-      <a class="btn btn-outline" href="mailto:mra125@sfu.ca">
-        Want to connect? Email me at mra125@sfu.ca
-        <span class="icon" aria-hidden="true">
-        </span>
-      </a>
-    </section>
+        <div class="prompt">
+          <h3>Prompt 3A</h3>
+          <p>For the <strong>top 10 platforms</strong>, how do regional sales compare (NA/EU/JP/Other)?</p>
+        </div>
+        <div id="vis3a" class="vis"></div>
 
-  </main>
-</body>
+        <div class="prompt">
+          <h3>Prompt 3B</h3>
+          <p>For those platforms, what’s the <strong>regional share</strong> (100% stacked)?</p>
+        </div>
+        <div id="vis3b" class="vis"></div>
+      </section>
+
+      <section class="card">
+        <h2>Visualization 4 — Visual Story</h2>
+
+        <div class="prompt">
+          <h3>Prompt 4A</h3>
+          <p>Which genres “over-index” in Japan vs North America (JP − NA total sales by genre)?</p>
+        </div>
+        <div id="vis4a" class="vis"></div>
+
+        <div class="prompt">
+          <h3>Prompt 4B</h3>
+          <p>How do the <strong>top 5 publishers</strong> rise/fall over time in global sales?</p>
+        </div>
+        <div id="vis4b" class="vis"></div>
+      </section>
+    </main>
+
+    <!-- IMPORTANT: must be module because a3.js uses import -->
+    <script type="module" src="a3.js"></script>
+  </body>
 </html>
+
