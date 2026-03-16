@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme-pink">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mini D3</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Mini D3</h1>
+  <main class="page page-viz">
+    <section class="viz-hero">
+      <h1 class="viz-title">Mini D3</h1>
+    </section>
 
-  <div id="d3-container"></div>
-  <p id="status"></p>
+    <section class="viz-row">
+      <div class="viz-label">
+        <p class="viz-num">01</p>
+        <h2 class="viz-name">Circle Canvas</h2>
+      </div>
+
+      <div class="viz-canvas">
+        <div class="d3-card">
+          <div class="d3-topbar">
+            <p id="status" class="d3-status">Circles: 0 / 10</p>
+          </div>
+          <div id="d3-container"></div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <script type="module" src="circleAnimation.js"></script>
 </body>

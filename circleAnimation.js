@@ -9,13 +9,13 @@ const circleRadius = 15;
 
 async function prepareVis() {
   svg = d3
-    .select("#d3-container")
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .style("background", "#f8f8f8")
-    .style("border", "1px solid #ccc")
-    .style("cursor", "crosshair");
+svg = d3
+  .select("#d3-container")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height)
+  .attr("viewBox", `0 0 ${width} ${height}`)
+  .style("cursor", "crosshair");
 
   svg.on("click", handleCanvasClick);
 
